@@ -12,6 +12,15 @@ const server = http.createServer((req, res) => {
     res.end("This is the OVERVIEW"); //返回响应
   } else if (pathName === "/product") {
     res.end("This is the PRODUCT");
+  } else if (pathName === "/api") {
+    //获取请求的query
+    const query = url.parse(req.url, true).query;
+    console.log(query);
+    res.writeHead(200, {
+      //设置响应头
+      "Content-type": "application/json", //设置响应类型
+    });
+    res.end("This is the API"); //返回响应
   } else {
     res.writeHead(404, {
       //设置响应头
